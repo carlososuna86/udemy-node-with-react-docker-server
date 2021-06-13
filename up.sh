@@ -1,5 +1,15 @@
 #!/bin/bash
 
+reset=0
+
+echo "> Stoping running services"
+docker-compose down
+
+if [[ "$reset" ]]: then
+  echo "> Removing stored data"
+  sudo rm -rf data
+fi
+
 echo "> Starting the MongoDB container"
 docker-compose up -d mongo
 
